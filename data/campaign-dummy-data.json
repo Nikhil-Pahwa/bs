@@ -1,0 +1,44 @@
+[
+  {
+    "activeDate": "12/03/2017",
+    "name": "test whatsapp",
+    "address": "US",
+    "view": {
+      "isViewPricing": true,
+      "actionToPerform": "viewPricing"
+    },
+    "actions": {
+      "csv": "download CSV for test whatsapp",
+      "report": "do Reporting for test whatsapp",
+      "schedule": "schedule for test whatsapp"
+    }
+  },
+  {
+    "activeDate": "12/12/2016",
+    "name": "super jewel",
+    "address": "US",
+    "view": {
+      "isViewPricing": true,
+      "actionToPerform": "viewPricing"
+    },
+    "actions": {
+      "csv": "download CSV for super jewel",
+      "report": "do Reporting for super jewel",
+      "schedule": "schedule for super jewel"
+    }
+  },
+  {
+    "activeDate": "12/09/2014",
+    "name": "test",
+    "address": "US",
+    "view": {
+      "isViewPricing": true,
+      "actionToPerform": "viewPricing"
+    },
+    "actions": {
+      "csv": "download CSV test",
+      "report": "do Reporting test",
+      "schedule": "schedule test"
+    }
+  }
+]
