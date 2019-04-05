@@ -30,6 +30,7 @@ let table = $(function() {
                           <button class="csv">csv</button>
                           <button class="reporting">reporting</button>
                           <button class="schedule">schedule</button>
+                          <input class="datepicker-hidden"/>
                         </div>
                       </td>
                     </tr>`;
@@ -54,38 +55,53 @@ let table = $(function() {
           createReportingDialog(campaignData);
           break;
         case 'schedule':
-          createScheduleDialog(campaignData);
+          handleSchedule(campaignData);
           break;
         default:
           console.log('do nothing');
           break;
       }
     });
+
+    $('table').on('click', '.schedule', function() {
+      $(this)
+        .closest('.actions')
+        .find('input')
+        .focus();
+    });
+
+    $('table').on('focus', '.datepicker-hidden', function() {
+      $(this).datepicker();
+    });
   }
 
   function createCSVDialog(data) {
-    let markup = data.actions['csv'];
-    $('#dialog-message').html(`<span class="dummy-data">${markup}</span>`);
+    $('#dialog-message').html(
+      `<span class="dummy-data">${createDialogMarkup(data)}</span>`
+    );
     openDialog();
+  }
+
+  function createDialogMarkup(data) {
+    let markup = `<table id="campaign">
+    <tr>
+      <th>DATE</th>
+      <th>CAMPAIGN</th>
+    </tr>
+    <tr><td>${data.activeDate}</td>
+    <td>${data.name}</td></tr>
+    </table>`;
+    return markup;
   }
 
   function createReportingDialog(data) {
-    let markup = data.actions['report'];
-    $('#dialog-message').html(`<span class="dummy-data">${markup}</span>`);
+    $('#dialog-message').html(
+      `<span class="dummy-data">${createDialogMarkup(data)}</span>`
+    );
     openDialog();
   }
 
-  function createScheduleDialog(data) {
-    let markup = data.actions['report'];
-    $('#dialog-message').html(`<span class="dummy-data">${markup}</span>`);
-    openDialog();
-    $('#datepicker').datepicker({
-      showOn: 'button',
-      buttonImage: 'images/calendar.gif',
-      buttonImageOnly: true,
-      buttonText: 'Select date'
-    });
-  }
+  function handleSchedule() {}
 
   function fetchData() {
     $.get('../data/campaign-dummy-data.json', function(dummyCampaignData) {
